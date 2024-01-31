@@ -1,0 +1,213 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap');
+
+
+header nav ul {
+    display: flex;
+    list-style-type: none;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+}
+body{
+    margin: 0;
+    padding: 0;
+    font-family: "Nunito+Sans:ital", "Helvetica Neue", "sans-serif", "Helvetica;"
+}
+nav{
+   display: flex;
+   flex-direction: row;
+   justify-content: space-between;
+   align-items: center;
+    width: 100%;
+    height: 50px;
+}
+
+.brand{
+    
+    font-size: 30px;    
+}
+ #brand{
+    color: #66a697;
+    text-decoration: none;
+    padding-left: 30px;
+    font-weight: 600;
+    font-size: 20px;
+
+}
+ 
+
+li > a {
+    text-decoration: none;
+    margin-right: 29px;
+    color: black;
+    font-size: 15px;
+    
+}
+h1, h2{
+    margin: 0;
+    text-align: center;
+    color: white;
+    font-weight: 400;
+}
+h1{
+    font-size: 30px;
+    padding-top: 40px;
+}
+h2{
+    font-size: 20px;
+    padding-top: 15px;
+    font-weight: 200;
+}
+section{
+    width: 100%;
+    height: 100vh;
+    background-image: url('assets/images/background.jpg');
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+}
+.trips{
+    display: flex;
+    flex-direction: row;
+    justify-content:space-evenly;
+    align-items: center;
+    margin-top: 2%;
+    padding-right: 10%;
+    padding-left: 10%;
+
+}
+form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 250px;
+    height: 300px;
+    border-radius: 3%;  
+}
+.container{
+    width: 280px;
+    height: 320px;
+    background-color: white; 
+    border-radius: 3%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+img{
+
+    width: 40%;
+    margin: auto;
+}
+.ligne {
+    width: 80%; 
+    height: 2px;
+    background-color: #66a697; 
+    margin: 20px 0;
+}
+.bord{
+
+    width: 88%; 
+    height: 1px;
+    background-color: #babcbb; 
+    margin: 0; 
+}
+
+input{
+    border: none;
+    width: 95%;
+    background-color: #f2f3f3;
+    border-radius: 3px;
+    height: 11%;
+    border-color: #f2f3f3; 
+    padding-left: 3%;  
+}
+
+.citya{
+    
+   margin-bottom: 12%;
+}
+.search-button{
+    border: none;
+    width: 95%;
+    background-color: #66a697;
+    border-radius: 3px;
+    color: white;
+    height: 12%;
+    margin-top: 40%;
+    
+}
+.time-to{
+    padding-bottom: 10%;
+}
+#booking {
+    /* Styles pour le conteneur principal des résultats de recherche */
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 5px;
+}
+
+.trips-list {
+    /* Styles pour chaque élément de la liste des voyages */
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-wrap: nowrap;
+    width: 100%;
+    background-color: #f2f3f3;
+    margin: 20px 0; 
+    
+   
+}
+
+.trips-list:last-child {
+    border-bottom: none;
+}
+
+.trips-list p {
+    /* Style pour les paragraphes à l'intérieur de chaque élément de la liste */
+    margin: 0;
+    color: #333;
+    font-size: 12px;
+}
+
+.trips-list .departure, .trips-list .arrival {
+    /* Plus de spécificité pour les villes de départ et d'arrivée */
+    font-weight: 100;
+}
+
+.trips-list .date {
+    /* Style pour la date */
+    color: #666;
+}
+
+.trips-list .price {
+    /* Style pour le prix */
+    
+    font-weight: bold;
+}
+
+.trips-list button {
+    /* Styles pour le bouton de réservation */
+    background-color:  #66a697; 
+    color: white;
+    border: none;
+    text-align: center;
+    align-self: center;
+    cursor: pointer;
+    border-radius: 3px;
+    font-size: 10px;
+}
+
+.trips-list button:hover {
+    /* Effet au survol pour le bouton */
+    background-color: white; 
+    color: #66a697;
+    border: solid 1px #66a697;
+   
+}
+

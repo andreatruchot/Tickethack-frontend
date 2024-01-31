@@ -1,11 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Tickethack-Accueil</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    
+    <header>
+        <nav>
+            <a id="brand" href="/index.html">Tickehack</a>
+            <ul>
+                <li class="cart"><a href="/templates/cart/cart.html">cart</a></li> 
+                <li class="book"><a href="/templates/booking/booking.html">bookings</a></li> 
+            </ul>
+        </nav>
+    </header>
+    <section class="main">
+        <h1>Explore the world effortlessly by train!</h1>
+        <h2 class ="compare">Compare book and enjoy cheap prices for train tickets : your journey starts on Tickethack</h2>
+        <div class="trips">
+           <div class="container" id="seaching">
+               <form action="/search-trip" method="GET">
+                
+                  <label for="departure-city"></label>
+                 <input type="text" id="departure-city"classe="cityd" name="departureCity" placeholder="Departure">
+                 <div class="bord"></div>
+                  <label for="arrival-city"></label>
+                  <input type="text" id="arrival-city"class="citya" name="arrivalCity" placeholder="Arrival">
+             
+                  <label for="departure-date"></label>
+                  <input type="date" id="departure-date" name="departureDate">
+                
+                  <button  class ="search-button"type="submit">Search</button>
+               </form>
+            </div>
+             <div class="container" id="booking">
+                    <img src="/assets/images/train.png" class="train-draw" alt="dessin d'un train"/>
+                    <div class="ligne"></div>
+
+                    <p class ="time-to">it's time to book your future trip</p>
+              
+                   <!-- <div class="trips-list">
+                    <p class="departure"></p><p class="arrival"></p class="hours"></p><p class="price"></p>
+                    <button type="submit">book</button>
+                    </div>
+                     <div class="no-found">
+                    <image src="train.png" class="train-draw" alt="dessin d'un train"/>
+                    <p>no found</p>
+                     </div> -->
+            </div>
+        </div>   
+    </section>
+    <script src="script.js"></script>
 </body>
 </html>
