@@ -9,16 +9,12 @@ searchButton.addEventListener('click', function(event) {
     console.log(departureCity);
     const arrivalCity = document.getElementById('arrival-city').value;
     console.log(arrivalCity);
-   // const departureDate = document.getElementById('departure-date').value;
 
     // Construction de l'URL pour la requête GET
     const url = `http://localhost:3000/trips?departure=${departureCity}&arrival=${arrivalCity}&_=${new Date().getTime()}`;
 
     // Envoi de la requête GET au serveur
-    fetch(url, {
-        method: 'GET',
-       
-    })
+    fetch(url)
     .then(response => {
         if (!response.ok) {
             throw new Error('Network response was not ok');
@@ -27,8 +23,8 @@ searchButton.addEventListener('click', function(event) {
     })
     .then(data => {
         bookingContainer.innerHTML = ''; // Vide le conteneur avant d'ajouter les nouveaux résultats
-    
-        // Ici, on accède au champ 'allTrip' de l'objet de données
+
+        // Gérer l'affichage des voyages ou un message "not found"
         if (data.result && data.allTrip.length > 0) {
             data.allTrip.forEach(trip => {
                 const tripElement = document.createElement('div');
@@ -38,22 +34,54 @@ searchButton.addEventListener('click', function(event) {
                         <p class="departure">${trip.departure} > ${trip.arrival}</p>
                         <p class="date">${moment(trip.date).format('HH:mm')}</p>
                         <p class="price">$${trip.price}</p>
-                        <button type="button" class="book-button">Book</button>
+                        <button type="button" class="book-button" data-trip-id="${trip._id}">Book</button>
                     </div>`;
                 bookingContainer.appendChild(tripElement);
             });
+
+            // Ajouter des gestionnaires d'événements pour les boutons "Book"
+            addBookEventListeners();
         } else {
-            const notFoundElement = document.createElement('div');
-            notFoundElement.className = 'not-found';
-            notFoundElement.innerHTML = `
-                <img src="/assets/images/train.png" class="train-draw" alt="No trips found">
-                <p>No trips found</p>
-            `;
-            bookingContainer.appendChild(notFoundElement);
+            showNotFoundMessage();
         }
     })
     .catch(error => {
-        // Gérer les erreurs ici
+    
         console.error('Error:', error);
+        showNotFoundMessage();
     });
-});    
+});
+
+function addBookEventListeners() {
+    const bookButtons = document.querySelectorAll('.book-button');
+    bookButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const tripId = this.dataset.tripId;
+            fetch('http://localhost:3000/trips/carts', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ tripId: tripId })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.result) {
+                    alert('Trip booked successfully!');
+                } else {
+                    alert('Failed to book the trip.');
+                }
+            })
+        });
+    });
+}
+
+function showNotFoundMessage() {
+    const notFoundElement = document.createElement('div');
+    notFoundElement.className = 'not-found';
+    notFoundElement.innerHTML = `
+        <img src="/assets/images/train.png" class="train-draw" alt="No trips found">
+        <p>No trips found</p>
+    `;
+    bookingContainer.appendChild(notFoundElement);
+}
